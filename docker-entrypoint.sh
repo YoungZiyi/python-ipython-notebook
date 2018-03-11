@@ -18,4 +18,6 @@ echo "========================================================================"
 
 unset PASSWORD
 
-ipython notebook --no-browser --port 8888 --ip=* --NotebookApp.password="$HASH"
+jupyter notebook --generate-config
+echo '{"NotebookApp": {"password": "'$HASH'"}}' > ~/.jupyter/jupyter_notebook_config.json
+jupyter notebook --no-browser --port 8888 --ip=* --allow-root
